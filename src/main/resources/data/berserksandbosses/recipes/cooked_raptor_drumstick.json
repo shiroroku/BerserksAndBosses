@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "experience": 1,
+  "cookingtime": 300,
+  "ingredient": {
+    "item": "berserksandbosses:raw_raptor_drumstick"
+  },
+  "result": "berserksandbosses:cooked_raptor_drumstick"
+}
