@@ -1,4 +1,4 @@
-package crimsonspade.berserksandbosses.entities;
+package crimsonspade.berserksandbosses.Entity;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
