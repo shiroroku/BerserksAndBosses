@@ -2,6 +2,7 @@ package crimsonspade.berserksandbosses.Registry;
 
 import crimsonspade.berserksandbosses.BerserksAndBosses;
 import crimsonspade.berserksandbosses.items.ShurikenItem;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -56,7 +57,7 @@ public class ItemRegistry {
 		return () -> new Item(properties){
 			@Override
 			public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, @NotNull List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-				pTooltipComponents.add(new TranslatableComponent("tooltip.berserksandbosses." + tooltipKey));
+				pTooltipComponents.add(new TranslatableComponent("tooltip.berserksandbosses." + tooltipKey).withStyle(ChatFormatting.GRAY));
 			}
 		};
 	}
