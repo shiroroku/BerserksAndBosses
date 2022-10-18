@@ -2,12 +2,16 @@
   "tooltip.berserksandbosses.raw_raptor_drumstick": "Raw Meat of a Flesh Raptor... Now with a chance of Cardiovascular Disease!",
   "tooltip.berserksandbosses.cooked_raptor_drumstick": "Cooked Meat of a Flesh Raptor... Tastes like Chicken!",
   "tooltip.berserksandbosses.sasquash": "A Sasquash from a member of the Sasquatch Family... Sassy...",
-  "tooltip.berserksandbosses.cooked_crimsader_meat": "The Cooked Meat of a Crimsader… This is the best meat known to man…",
+  "tooltip.berserksandbosses.cooked_crimsader_meat": "The Cooked Meat of a Crimsader... This is the best meat known to man...",
   "tooltip.berserksandbosses.raw_crimsader_meat": "The Raw Meat of a Crimsader… It somehow tastes good raw…?",
-  "tooltip.berserksandbosses.crimsader_scale_plating": "The Scale-Plating of a Crimsader… A gentle but violent metal from another world…",
+  "tooltip.berserksandbosses.crimsader_scale_plating": "The Scale-Plating of a Crimsader… A gentle but violent metal from another world...",
   "tooltip.berserksandbosses.sandy_bloodbone": "The bone of a Barren Bonerott... It feels very crusty...",
   "tooltip.berserksandbosses.frosty_bloodbone": "The Bone of a Frigid Bonerott... Someone spilt ketchup on it...",
   "tooltip.berserksandbosses.bloodumbra_eye": "The eye of a Bloodumbra... It appears to be looking at you funny...",
+  "tooltip.berserksandbosses.malice_soulcrystal": "This item... isn't normal...",
+  "tooltip.berserksandbosses.shuriken": "A shuriken... Kinda pointy...",
+  "tooltip.berserksandbosses.spacefracture_shuriken": "A Spacefracture Shuriken... The cooler Ender Pearl...",
+  "tooltip.berserksandbosses.tectonic_medaillion": "A very strange medallion \nThe design comes from before the Dawn Era...",
 
   "item.berserksandbosses.raw_raptor_drumstick": "Raw Raptor Drumstick",
   "item.berserksandbosses.cooked_raptor_drumstick": "Cooked Raptor Drumstick",
@@ -18,6 +22,10 @@
   "item.berserksandbosses.sandy_bloodbone": "Sandy Bloodbone",
   "item.berserksandbosses.frosty_bloodbone": "Frosty Bloodbone",
   "item.berserksandbosses.bloodumbra_eye": "Bloodumbra Eye",
+  "item.berserksandbosses.malice_soulcrystal": "Malice Soulcrystal",
+  "item.berserksandbosses.shuriken": "Shuriken",
+  "item.berserksandbosses.spacefracture_shuriken": "Spacefracture Shuriken",
+  "item.berserksandbosses.tectonic_medaillion": "Tectonic Medaillion",
 
   "itemGroup.berserksandbosses": "Berserks And Bosses"
 }

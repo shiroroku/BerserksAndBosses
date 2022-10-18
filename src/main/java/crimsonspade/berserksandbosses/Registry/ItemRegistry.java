@@ -1,6 +1,10 @@
 package crimsonspade.berserksandbosses.Registry;
 
 import crimsonspade.berserksandbosses.BerserksAndBosses;
+import crimsonspade.berserksandbosses.Entity.SpacefractureShurikenProjectile;
+import crimsonspade.berserksandbosses.Item.ShurikenItem;
+import crimsonspade.berserksandbosses.Item.SpacefractureShurikenItem;
+import crimsonspade.berserksandbosses.Item.TectonicMedaillionItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -48,9 +52,18 @@ public class ItemRegistry {
 	public static final RegistryObject<Item> BLOODUMBRA_EYE = ITEMS.register("bloodumbra_eye",
 			TooltipItem(new Item.Properties().tab(BerserksAndBosses.CREATIVETAB).stacksTo(16).fireResistant(), "bloodumbra_eye"));
 
-	//TODO: implement shuriken
-	/*public static final RegistryObject<ShurikenItem> SHURIKEN = ITEMS.register("shuriken",
-			()-> new ShurikenItem())*/
+	public static final RegistryObject<Item> MALICE_SOULCRYSTAL = ITEMS.register("malice_soulcrystal",
+			TooltipItem(new Item.Properties().tab(BerserksAndBosses.CREATIVETAB).rarity(Rarity.EPIC).stacksTo(16).fireResistant(), "malice_soulcrystal"));
+
+
+	public static final RegistryObject<ShurikenItem> SHURIKEN = ITEMS.register("shuriken",
+			()-> new ShurikenItem(new Item.Properties().tab(BerserksAndBosses.CREATIVETAB)));
+
+	public static final RegistryObject<SpacefractureShurikenItem> SPACEFRACTURE_SHURIKEN = ITEMS.register("spacefracture_shuriken",
+			()-> new SpacefractureShurikenItem(new Item.Properties().stacksTo(32).tab(BerserksAndBosses.CREATIVETAB)));
+
+	public static final RegistryObject<TectonicMedaillionItem> TECTONIC_MEDAILLION = ITEMS.register("tectonic_medaillion",
+			()-> new TectonicMedaillionItem(new Item.Properties().stacksTo(16).tab(BerserksAndBosses.CREATIVETAB)));
 
 	public static Supplier<Item> TooltipItem(Item.Properties properties, String tooltipKey){
 		return () -> new Item(properties){
