@@ -1,13 +1,14 @@
 package crimsonspade.berserksandbosses;
 
 import com.mojang.logging.LogUtils;
+import crimsonspade.berserksandbosses.Entity.*;
 import crimsonspade.berserksandbosses.Registry.BrewingRegistry;
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
 import crimsonspade.berserksandbosses.Registry.ItemRegistry;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -24,9 +25,10 @@ public class BerserksAndBosses {
 	public BerserksAndBosses() {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		ItemRegistry.ITEMS.register(eventBus);
 		EntityRegistry.ENTITIES.register(eventBus);
+		ItemRegistry.ITEMS.register(eventBus);
 		eventBus.addListener(this::setup);
+		eventBus.addListener(BerserksAndBosses::entityAttributeEvent);
 	}
 
 	public static final CreativeModeTab CREATIVETAB = new CreativeModeTab(MODID) {
@@ -41,6 +43,14 @@ public class BerserksAndBosses {
 		event.enqueueWork(()->{
 			new BrewingRegistry().registerRecipes();
 		});
+	}
+
+	private static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+		event.put(EntityRegistry.BARREN_BONEROTT.get(), BarrenBonerott.setAttributes());
+		event.put(EntityRegistry.FRIGID_BONEROTT.get(), FrigidBonerott.setAttributes());
+		event.put(EntityRegistry.BLOODUMBRA.get(), Bloodumbra.setAttributes());
+		event.put(EntityRegistry.CRIMPA.get(), Crimpa.setAttributes());
+		event.put(EntityRegistry.WARPA.get(), Warpa.setAttributes());
 	}
 	
 }

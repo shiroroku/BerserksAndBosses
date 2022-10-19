@@ -26,6 +26,17 @@
   "item.berserksandbosses.shuriken": "Shuriken",
   "item.berserksandbosses.spacefracture_shuriken": "Spacefracture Shuriken",
   "item.berserksandbosses.tectonic_medaillion": "Tectonic Medaillion",
+  "item.berserksandbosses.barren_bonerott_spawn_egg": "Barren Bonerott SpawnEgg",
+  "item.berserksandbosses.frigid_bonerott_spawn_egg": "Frigid Bonerott SpawnEgg",
+  "item.berserksandbosses.bloodumbra_spawn_egg": "Bloodumbra SpawnEgg",
+  "item.berserksandbosses.crimpa_spawn_egg": "Crimpa SpawnEgg",
+  "item.berserksandbosses.warpa_spawn_egg": "Warpa SpawnEgg",
 
-  "itemGroup.berserksandbosses": "Berserks And Bosses"
+  "itemGroup.berserksandbosses": "Berserks And Bosses",
+
+  "entity.berserksandbosses.barren_bonerott": "Barren Bonerott",
+  "entity.berserksandbosses.frigid_bonerott": "Frigid Bonerott",
+  "entity.berserksandbosses.bloodumbra": "Bloodumbra",
+  "entity.berserksandbosses.crimpa": "Crimpa",
+  "entity.berserksandbosses.warpa": "Warpa"
 }
