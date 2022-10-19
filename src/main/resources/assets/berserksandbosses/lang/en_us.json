@@ -32,11 +32,12 @@
   "item.berserksandbosses.crimpa_spawn_egg": "Crimpa SpawnEgg",
   "item.berserksandbosses.warpa_spawn_egg": "Warpa SpawnEgg",
 
-  "itemGroup.berserksandbosses": "Berserks And Bosses",
-
   "entity.berserksandbosses.barren_bonerott": "Barren Bonerott",
   "entity.berserksandbosses.frigid_bonerott": "Frigid Bonerott",
   "entity.berserksandbosses.bloodumbra": "Bloodumbra",
   "entity.berserksandbosses.crimpa": "Crimpa",
   "entity.berserksandbosses.warpa": "Warpa"
+  "enchantment.berserksandbosses.rebellion": "Rebellion",
+
+  "itemGroup.berserksandbosses": "Berserks And Bosses"
 }
