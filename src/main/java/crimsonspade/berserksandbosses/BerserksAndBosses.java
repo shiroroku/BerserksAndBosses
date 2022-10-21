@@ -55,6 +55,15 @@ public class BerserksAndBosses {
 		event.put(EntityRegistry.BLOODUMBRA.get(), Bloodumbra.setAttributes());
 		event.put(EntityRegistry.CRIMPA.get(), Crimpa.setAttributes());
 		event.put(EntityRegistry.WARPA.get(), Warpa.setAttributes());
+		event.put(EntityRegistry.NORMPA.get(), Normpa.setAttributes());
+		event.put(EntityRegistry.BLIZZPA.get(), Blizzpa.setAttributes());
+		event.put(EntityRegistry.SPRINGLOCK.get(), Springlock.setAttributes());
+		event.put(EntityRegistry.CHAINLOCK.get(), Chainlock.setAttributes());
+		event.put(EntityRegistry.DEVOLTER.get(), Devolter.setAttributes());
+		event.put(EntityRegistry.BERSERK_AXOLOTL.get(), BerserkAxolotl.setAttributes());
+		event.put(EntityRegistry.FLESH_RAPTOR.get(), FleshRaptor.setAttributes());
+		event.put(EntityRegistry.XENOCARA.get(), Xenocara.setAttributes());
+		event.put(EntityRegistry.NETHER_WIDOW.get(), NetherWidow.setAttributes());
 	}
 
 }

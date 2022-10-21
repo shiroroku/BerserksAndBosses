@@ -31,12 +31,30 @@
   "item.berserksandbosses.bloodumbra_spawn_egg": "Bloodumbra SpawnEgg",
   "item.berserksandbosses.crimpa_spawn_egg": "Crimpa SpawnEgg",
   "item.berserksandbosses.warpa_spawn_egg": "Warpa SpawnEgg",
+  "item.berserksandbosses.normpa_spawn_egg": "Normpa SpawnEgg",
+  "item.berserksandbosses.blizzpa_spawn_egg": "Blizzpa SpawnEgg",
+  "item.berserksandbosses.springlock_spawn_egg": "Springlock SpawnEgg",
+  "item.berserksandbosses.chainlock_spawn_egg": "Chainlock SpawnEgg",
+  "item.berserksandbosses.devolter_spawn_egg": "Devolter SpawnEgg",
+  "item.berserksandbosses.berserk_axolotl_spawn_egg": "Berserk Axolotl SpawnEgg",
+  "item.berserksandbosses.flesh_raptor_spawn_egg": "Flesh Raptor SpawnEgg",
+  "item.berserksandbosses.nether_widow_spawn_egg": "Nether Widow SpawnEgg",
+  "item.berserksandbosses.xenocara_spawn_egg": "Xenocara SpawnEgg",
 
   "entity.berserksandbosses.barren_bonerott": "Barren Bonerott",
   "entity.berserksandbosses.frigid_bonerott": "Frigid Bonerott",
   "entity.berserksandbosses.bloodumbra": "Bloodumbra",
   "entity.berserksandbosses.crimpa": "Crimpa",
-  "entity.berserksandbosses.warpa": "Warpa"
+  "entity.berserksandbosses.warpa": "Warpa",
+  "entity.berserksandbosses.normpa": "Normpa",
+  "entity.berserksandbosses.blizzpa": "Blizzpa",
+  "entity.berserksandbosses.springlock": "Springlock",
+  "entity.berserksandbosses.chainlock": "Chainlock",
+  "entity.berserksandbosses.berserk_axolotl": "Berserk Axolotl",
+  "entity.berserksandbosses.flesh_raptor": "Flesh Raptor",
+  "entity.berserksandbosses.xenocara": "Xenocara",
+  "entity.berserksandbosses.nether_widow": "Nether Widow",
+
   "enchantment.berserksandbosses.rebellion": "Rebellion",
 
   "itemGroup.berserksandbosses": "Berserks And Bosses"
