@@ -27,6 +27,8 @@ public class EntityRendererEvent {
         event.registerLayerDefinition(FleshRaptorModel.LAYER_LOCATION, FleshRaptorModel::createBodyLayer);
         event.registerLayerDefinition(XenocaraModel.LAYER_LOCATION, XenocaraModel::createBodyLayer);
         event.registerLayerDefinition(NetherWidowModel.LAYER_LOCATION, NetherWidowModel::createBodyLayer);
+        event.registerLayerDefinition(AshuraEndermanModel.LAYER_LOCATION, AshuraEndermanModel::createBodyLayer);
+        event.registerLayerDefinition(CalamityGolemModel.LAYER_LOCATION, CalamityGolemModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -47,5 +49,7 @@ public class EntityRendererEvent {
         event.registerEntityRenderer(EntityRegistry.FLESH_RAPTOR.get(), FleshRaptorRenderer::new);
         event.registerEntityRenderer(EntityRegistry.NETHER_WIDOW.get(), NetherWidowRenderer::new);
         event.registerEntityRenderer(EntityRegistry.XENOCARA.get(), XenocaraRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.ASHURA_ENDERMAN.get(), AshuraEndermanRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.CALAMITY_GOLEM.get(), CalamityGolemRenderer::new);
     }
 }

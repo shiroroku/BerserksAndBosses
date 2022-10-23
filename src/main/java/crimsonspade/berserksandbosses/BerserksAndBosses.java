@@ -64,6 +64,8 @@ public class BerserksAndBosses {
 		event.put(EntityRegistry.FLESH_RAPTOR.get(), FleshRaptor.setAttributes());
 		event.put(EntityRegistry.XENOCARA.get(), Xenocara.setAttributes());
 		event.put(EntityRegistry.NETHER_WIDOW.get(), NetherWidow.setAttributes());
+		event.put(EntityRegistry.ASHURA_ENDERMAN.get(), AshuraEnderman.setAttributes());
+		event.put(EntityRegistry.CALAMITY_GOLEM.get(), CalamityGolem.setAttributes());
 	}
 
 }

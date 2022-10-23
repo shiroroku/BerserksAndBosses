@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,8 +19,16 @@ import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.animal.horse.SkeletonTrapGoal;
 import net.minecraft.world.entity.monster.Husk;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.ThrownPotion;
+import net.minecraft.world.entity.raid.Raider;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -27,7 +36,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.EnumSet;
 
-public class Devolter extends Monster {
+public class Devolter extends Monster implements RangedAttackMob {
     public Devolter(EntityType<? extends Devolter> p_32889_, Level p_32890_) {
         super(p_32889_, p_32890_);
     }
@@ -42,6 +51,40 @@ public class Devolter extends Monster {
                 .add(Attributes.ATTACK_DAMAGE, 6.0D)
                 .add(Attributes.ARMOR, 2.0D)
                 .build();
+    }
+
+    public void performRangedAttack(LivingEntity pTarget, float pDistanceFactor) {
+        Vec3 vec3 = pTarget.getDeltaMovement();
+        double d0 = pTarget.getX() + vec3.x - this.getX();
+        double d1 = pTarget.getEyeY() - (double)1.1F - this.getY();
+        double d2 = pTarget.getZ() + vec3.z - this.getZ();
+        double d3 = Math.sqrt(d0 * d0 + d2 * d2);
+        Potion potion = Potions.HARMING;
+        if (pTarget instanceof Raider) {
+            if (pTarget.getHealth() <= 4.0F) {
+                potion = Potions.HEALING;
+            } else {
+                potion = Potions.REGENERATION;
+            }
+
+            this.setTarget((LivingEntity)null);
+        } else if (d3 >= 8.0D && !pTarget.hasEffect(MobEffects.MOVEMENT_SLOWDOWN)) {
+            potion = Potions.SLOWNESS;
+        } else if (pTarget.getHealth() >= 8.0F && !pTarget.hasEffect(MobEffects.POISON)) {
+            potion = Potions.POISON;
+        } else if (d3 <= 3.0D && !pTarget.hasEffect(MobEffects.WEAKNESS) && this.random.nextFloat() < 0.25F) {
+            potion = Potions.WEAKNESS;
+        }
+
+        ThrownPotion thrownpotion = new ThrownPotion(this.level, this);
+        thrownpotion.setItem(PotionUtils.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
+        thrownpotion.setXRot(thrownpotion.getXRot() - -20.0F);
+        thrownpotion.shoot(d0, d1 + d3 * 0.2D, d2, 0.75F, 8.0F);
+        if (!this.isSilent()) {
+            this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.WITCH_THROW, this.getSoundSource(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
+        }
+
+        this.level.addFreshEntity(thrownpotion);
     }
 
     public void aiStep() {
@@ -131,6 +174,7 @@ public class Devolter extends Monster {
             }
         });
         this.goalSelector.addGoal(3, new Devolter.SummonGoal(this, 10));
+        this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.0D, 60, 10.0F));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, false, false));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new FloatGoal(this));
