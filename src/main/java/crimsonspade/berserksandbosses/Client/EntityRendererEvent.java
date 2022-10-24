@@ -29,6 +29,10 @@ public class EntityRendererEvent {
         event.registerLayerDefinition(NetherWidowModel.LAYER_LOCATION, NetherWidowModel::createBodyLayer);
         event.registerLayerDefinition(AshuraEndermanModel.LAYER_LOCATION, AshuraEndermanModel::createBodyLayer);
         event.registerLayerDefinition(CalamityGolemModel.LAYER_LOCATION, CalamityGolemModel::createBodyLayer);
+        event.registerLayerDefinition(BerserkPhantomModel.LAYER_LOCATION, BerserkPhantomModel::createBodyLayer);
+        event.registerLayerDefinition(BerserkStriderModel.LAYER_LOCATION, BerserkStriderModel::createBodyLayer);
+        event.registerLayerDefinition(PitchfulModel.LAYER_LOCATION, PitchfulModel::createBodyLayer);
+        event.registerLayerDefinition(MaliceSoulflameModel.LAYER_LOCATION, MaliceSoulflameModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -51,5 +55,9 @@ public class EntityRendererEvent {
         event.registerEntityRenderer(EntityRegistry.XENOCARA.get(), XenocaraRenderer::new);
         event.registerEntityRenderer(EntityRegistry.ASHURA_ENDERMAN.get(), AshuraEndermanRenderer::new);
         event.registerEntityRenderer(EntityRegistry.CALAMITY_GOLEM.get(), CalamityGolemRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.BERSERK_PHANTOM.get(), BerserkPhantomRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.BERSERK_STRIDER.get(), BerserkStriderRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.PITCHFUL.get(), PitchfulRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.MALICE_SOULFLAME.get(), MaliceSoulflameRenderer::new);
     }
 }

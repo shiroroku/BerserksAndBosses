@@ -36,6 +36,10 @@ public class EntityRegistry {
 	public static final RegistryObject<EntityType<NetherWidow>> NETHER_WIDOW = registerWithSpawnEgg("nether_widow", ()-> EntityType.Builder.of(NetherWidow::new, MobCategory.MONSTER).sized(2.6f, 1.6f).build(BerserksAndBosses.MODID + "nether_widow"), 0x730808, 0x000000);
 	public static final RegistryObject<EntityType<AshuraEnderman>> ASHURA_ENDERMAN = registerWithSpawnEgg("ashura_enderman", ()-> EntityType.Builder.of(AshuraEnderman::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "ashura_enderman"), 0x2b2b2b, 0x121212);
 	public static final RegistryObject<EntityType<CalamityGolem>> CALAMITY_GOLEM = registerWithSpawnEgg("calamity_golem", ()-> EntityType.Builder.of(CalamityGolem::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "calamity_golem"), 0x700a0a, 0x380f0f);
+	public static final RegistryObject<EntityType<BerserkPhantom>> BERSERK_PHANTOM = registerWithSpawnEgg("berserk_phantom", ()-> EntityType.Builder.of(BerserkPhantom::new, MobCategory.MONSTER).sized(10f, 2.5f).build(BerserksAndBosses.MODID + "berserk_phantom"), 0x6e2a6e, 0xa36da3);
+	public static final RegistryObject<EntityType<BerserkStrider>> BERSERK_STRIDER = registerWithSpawnEgg("berserk_strider", ()-> EntityType.Builder.of(BerserkStrider::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "berserk_strider"), 0x8c4a53, 0x8a8384);
+	public static final RegistryObject<EntityType<Pitchful>> PITCHFUL = registerWithSpawnEgg("pitchful", ()-> EntityType.Builder.of(Pitchful::new, MobCategory.MONSTER).sized(2.4f, 2.4f).build(BerserksAndBosses.MODID + "pitchful"), 0x333333, 0x706d6d);
+	public static final RegistryObject<EntityType<MaliceSoulflame>> MALICE_SOULFLAME = registerWithSpawnEgg("malice_soulflame", ()-> EntityType.Builder.of(MaliceSoulflame::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "malice_soulflame"), 0xf2002c, 0x46e3d9);
 
 	private static <T extends Mob> RegistryObject<EntityType<T>> register(String id, Supplier<? extends EntityType<T>> sup){
 		return ENTITIES.register(id, sup);

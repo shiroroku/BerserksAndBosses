@@ -12,6 +12,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.axolotl.Axolotl;
+import net.minecraft.world.entity.monster.Strider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -20,10 +21,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class BerserkAxolotl extends Axolotl {
+public class BerserkStrider extends Strider {
     public int suriveTime = 96000;
 
-    public BerserkAxolotl(EntityType<? extends BerserkAxolotl> p_149105_, Level p_149106_) {
+    public BerserkStrider(EntityType<? extends BerserkStrider> p_149105_, Level p_149106_) {
         super(p_149105_, p_149106_);
     }
 
@@ -50,21 +51,21 @@ public class BerserkAxolotl extends Axolotl {
         super.registerGoals();
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, Entity::isInWater));
         this.goalSelector.addGoal(1, new MoveTowardsTargetGoal(this, 3, 16));
-        this.goalSelector.addGoal(2, new KidnapGoal(this, () -> this.navigation.createPath(findBottomWater(this.blockPosition()), 1)));
+        this.goalSelector.addGoal(2, new KidnapGoal(this, () -> this.navigation.createPath(findBottomLava(this.blockPosition()), 1)));
     }
 
-    BlockPos findBottomWater(BlockPos pos){
-        if(this.level.getBlockState(pos) == Blocks.WATER.defaultBlockState()){
-            if(findBottomWater(pos.below()) != null){
-                return findBottomWater(pos.below());
-            } else if (this.level.getBlockState(pos.north()) == Blocks.WATER.defaultBlockState()){
-                return findBottomWater(pos.north().below());
-            } else if (this.level.getBlockState(pos.east()) == Blocks.WATER.defaultBlockState()){
-                return findBottomWater(pos.east().below());
-            } else if (this.level.getBlockState(pos.south()) == Blocks.WATER.defaultBlockState()){
-                return findBottomWater(pos.south().below());
-            } else if (this.level.getBlockState(pos.west()) == Blocks.WATER.defaultBlockState()){
-                return findBottomWater(pos.west().below());
+    BlockPos findBottomLava(BlockPos pos){
+        if(this.level.getBlockState(pos) == Blocks.LAVA.defaultBlockState()){
+            if(findBottomLava(pos.below()) != null){
+                return findBottomLava(pos.below());
+            } else if (this.level.getBlockState(pos.north()) == Blocks.LAVA.defaultBlockState()){
+                return findBottomLava(pos.north().below());
+            } else if (this.level.getBlockState(pos.east()) == Blocks.LAVA.defaultBlockState()){
+                return findBottomLava(pos.east().below());
+            } else if (this.level.getBlockState(pos.south()) == Blocks.LAVA.defaultBlockState()){
+                return findBottomLava(pos.south().below());
+            } else if (this.level.getBlockState(pos.west()) == Blocks.LAVA.defaultBlockState()){
+                return findBottomLava(pos.west().below());
             } else {
                 return pos;
             }

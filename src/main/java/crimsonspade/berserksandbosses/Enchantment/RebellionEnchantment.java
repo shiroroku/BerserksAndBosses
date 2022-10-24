@@ -20,6 +20,7 @@ public class RebellionEnchantment extends Enchantment {
 		if (event.side == LogicalSide.SERVER && event.player.tickCount % 2 == 0) {
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(event.player.getItemBySlot(EquipmentSlot.CHEST));
 			if (enchantments.containsKey(EnchantmentRegistry.rebellion.get())) {
+				var negEffects = event.player.getActiveEffects().stream().filter(mobEffectInstance -> !mobEffectInstance.getEffect().isBeneficial()).toList();
 				//todo add damage reduction
 			}
 		}

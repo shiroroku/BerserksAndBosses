@@ -66,6 +66,10 @@ public class BerserksAndBosses {
 		event.put(EntityRegistry.NETHER_WIDOW.get(), NetherWidow.setAttributes());
 		event.put(EntityRegistry.ASHURA_ENDERMAN.get(), AshuraEnderman.setAttributes());
 		event.put(EntityRegistry.CALAMITY_GOLEM.get(), CalamityGolem.setAttributes());
+		event.put(EntityRegistry.BERSERK_STRIDER.get(), BerserkStrider.setAttributes());
+		event.put(EntityRegistry.BERSERK_PHANTOM.get(), BerserkPhantom.setAttributes());
+		event.put(EntityRegistry.PITCHFUL.get(), Pitchful.setAttributes());
+		event.put(EntityRegistry.MALICE_SOULFLAME.get(), MaliceSoulflame.setAttributes());
 	}
 
 }

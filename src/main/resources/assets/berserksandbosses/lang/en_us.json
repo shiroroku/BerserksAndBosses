@@ -42,6 +42,10 @@
   "item.berserksandbosses.xenocara_spawn_egg": "Xenocara Spawn Egg",
   "item.berserksandbosses.calamity_golem_spawn_egg": "Calamity Golem Spawn Egg",
   "item.berserksandbosses.ashura_enderman_spawn_egg": "Ashura Enderman Spawn Egg",
+  "item.berserksandbosses.berserk_strider_spawn_egg": "Berserk Strider Spawn Egg",
+  "item.berserksandbosses.berserk_phantom_spawn_egg": "Berserk Phantom Spawn Egg",
+  "item.berserksandbosses.pitchful_spawn_egg": "Pitchful Spawn Egg",
+  "item.berserksandbosses.malice_soulflame_spawn_egg": "Malice Soulflame Spawn Egg",
 
   "entity.berserksandbosses.barren_bonerott": "Barren Bonerott",
   "entity.berserksandbosses.frigid_bonerott": "Frigid Bonerott",
@@ -59,6 +63,10 @@
   "entity.berserksandbosses.nether_widow": "Nether Widow",
   "entity.berserksandbosses.ashura_enderman": "Ashura Enderman",
   "entity.berserksandbosses.calamity_golem": "Calamity Golem",
+  "entity.berserksandbosses.berserk_phantom": "Berserk Phantom",
+  "entity.berserksandbosses.berserk_strider": "Berserk Strider",
+  "entity.berserksandbosses.pitchful": "Pitchful",
+  "entity.berserksandbosses.malice_soulflame": "Malice Soulflame",
 
   "enchantment.berserksandbosses.rebellion": "Rebellion",
 
