@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 public class BerserkAxolotl extends Axolotl {
-    public int suriveTime = 96000;
+    public int suriveTime = 0;
 
     public BerserkAxolotl(EntityType<? extends BerserkAxolotl> p_149105_, Level p_149106_) {
         super(p_149105_, p_149106_);
@@ -30,8 +30,8 @@ public class BerserkAxolotl extends Axolotl {
     @Override
     public void tick() {
         super.tick();
-        suriveTime --;
-        if (suriveTime <= 0){
+        suriveTime ++;
+        if (suriveTime >= 96000){
             var entity = new MaliceSoulflame(EntityRegistry.MALICE_SOULFLAME.get(), this.level);
             entity.setPos(this.position());
             this.level.addFreshEntity(entity);
@@ -89,8 +89,5 @@ public class BerserkAxolotl extends Axolotl {
     public void readAdditionalSaveData(CompoundTag p_149145_) {
         super.readAdditionalSaveData(p_149145_);
         this.suriveTime = p_149145_.getInt("surviveTime");
-        if (this.firstTick){
-            suriveTime = 96000;
-        }
     }
 }

@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
 public class BerserkPhantom extends Phantom {
-    public int suriveTime = 96000;
+    public int suriveTime = 0;
 
     public BerserkPhantom(EntityType<? extends BerserkPhantom> p_149105_, Level p_149106_) {
         super(p_149105_, p_149106_);
@@ -27,8 +27,8 @@ public class BerserkPhantom extends Phantom {
     @Override
     public void tick() {
         super.tick();
-        suriveTime --;
-        if (suriveTime <= 0){
+        suriveTime ++;
+        if (suriveTime >= 96000){
             var entity = new MaliceSoulflame(EntityRegistry.MALICE_SOULFLAME.get(), this.level);
             entity.setPos(this.position());
             this.level.addFreshEntity(entity);
@@ -86,8 +86,5 @@ public class BerserkPhantom extends Phantom {
     public void readAdditionalSaveData(CompoundTag p_149145_) {
         super.readAdditionalSaveData(p_149145_);
         this.suriveTime = p_149145_.getInt("surviveTime");
-        if (this.firstTick){
-            suriveTime = 96000;
-        }
     }
 }

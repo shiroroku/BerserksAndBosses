@@ -1,6 +1,7 @@
 package crimsonspade.berserksandbosses.Entity;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -13,28 +14,38 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public class Pitchful extends Monster {
-    public int lightTime = 90;
+    public int lightTime = 0;
+    public Player owner;
 
     public Pitchful(EntityType<? extends Pitchful> p_149105_, Level p_149106_) {
         super(p_149105_, p_149106_);
     }
 
+    public Pitchful(EntityType<? extends Pitchful> type, Level level, Player owner){
+        super(type, level);
+        this.owner = owner;
+    }
+
     @Override
     public void tick() {
         super.tick();
-        if(getTarget() != null && getTarget().getBrightness() < 3f) {
-            lightTime--;
-            if (lightTime <= 0) {
+        if (getTarget() == null){
+            this.setTarget(this.owner);
+        }
+        if(getTarget() != null && level.getRawBrightness(getTarget().getOnPos(), 0) < 3f) {
+            lightTime++;
+            if (lightTime >= 90) {
                 getTarget().kill();
+                this.discard();
             }
-        } else {
+        } else if (getTarget() != null && level.getRawBrightness(getTarget().getOnPos(), 0) > 3) {
             this.discard();
         }
     }
 
     @Override
     protected void registerGoals() {
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     @Override
@@ -61,8 +72,5 @@ public class Pitchful extends Monster {
     public void readAdditionalSaveData(CompoundTag p_149145_) {
         super.readAdditionalSaveData(p_149145_);
         this.lightTime = p_149145_.getInt("lightTime");
-        if (this.firstTick){
-            lightTime = 90;
-        }
     }
 }

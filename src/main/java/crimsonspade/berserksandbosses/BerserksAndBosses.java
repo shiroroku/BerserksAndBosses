@@ -6,9 +6,14 @@ import crimsonspade.berserksandbosses.Registry.BrewingRegistry;
 import crimsonspade.berserksandbosses.Registry.EnchantmentRegistry;
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
 import crimsonspade.berserksandbosses.Registry.ItemRegistry;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Husk;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -46,6 +51,20 @@ public class BerserksAndBosses {
 		MinecraftForge.EVENT_BUS.register(ModEvents.class);
 		event.enqueueWork(() -> {
 			new BrewingRegistry().registerRecipes();
+
+			SpawnPlacements.register(EntityRegistry.CRIMPA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.WARPA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.NORMPA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.BLIZZPA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.BARREN_BONEROTT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.FRIGID_BONEROTT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.BLOODUMBRA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.DEVOLTER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.FLESH_RAPTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.ASHURA_ENDERMAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.NETHER_WIDOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
+			SpawnPlacements.register(EntityRegistry.MALICE_SOULFLAME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.XENOCARA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
 		});
 	}
 
