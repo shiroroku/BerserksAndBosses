@@ -46,6 +46,8 @@
   "item.berserksandbosses.berserk_phantom_spawn_egg": "Berserk Phantom Spawn Egg",
   "item.berserksandbosses.pitchful_spawn_egg": "Pitchful Spawn Egg",
   "item.berserksandbosses.malice_soulflame_spawn_egg": "Malice Soulflame Spawn Egg",
+  "item.berserksandbosses.tectonic_colossus_1_spawn_egg": "Tectonic Colossus Spawn Egg",
+  "item.berserksandbosses.crimsader_spawn_egg": "Tectonic Colossus Spawn Egg",
 
   "entity.berserksandbosses.barren_bonerott": "Barren Bonerott",
   "entity.berserksandbosses.frigid_bonerott": "Frigid Bonerott",
@@ -67,6 +69,9 @@
   "entity.berserksandbosses.berserk_strider": "Berserk Strider",
   "entity.berserksandbosses.pitchful": "Pitchful",
   "entity.berserksandbosses.malice_soulflame": "Malice Soulflame",
+  "entity.berserksandbosses.tectonic_colossus_1": "Tectonic colossus",
+  "entity.berserksandbosses.tectonic_colossus_2": "Tectonic colossus",
+  "entity.berserksandbosses.crimsader": "Crimsader",
 
   "enchantment.berserksandbosses.rebellion": "Rebellion",
 

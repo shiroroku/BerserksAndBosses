@@ -2,6 +2,8 @@ package crimsonspade.berserksandbosses;
 
 import crimsonspade.berserksandbosses.Enchantment.RebellionEnchantment;
 import crimsonspade.berserksandbosses.Entity.AshuraEnderman;
+import crimsonspade.berserksandbosses.Entity.TectonicColossus1;
+import crimsonspade.berserksandbosses.Entity.TectonicColossus2;
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraftforge.event.TickEvent;

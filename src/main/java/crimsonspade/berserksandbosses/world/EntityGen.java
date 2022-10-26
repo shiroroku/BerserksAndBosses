@@ -53,6 +53,9 @@ public class EntityGen {
 
         addEntityToAllBiomes(event, EntityRegistry.XENOCARA.get(),
                 1, 1, 1);
+
+        addEntityToCategory(event, EntityRegistry.XENOCARA.get(),
+                20, 1, 1, Biome.BiomeCategory.NETHER);
     }
 
 

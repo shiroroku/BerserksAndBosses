@@ -12,7 +12,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class Bloodumbra extends Husk {
+public class Bloodumbra extends Monster {
     public Bloodumbra(EntityType<? extends Bloodumbra> p_32889_, Level p_32890_) {
         super(p_32889_, p_32890_);
     }

@@ -8,10 +8,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Husk;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class BarrenBonerott extends Husk {
+public class BarrenBonerott extends Monster {
     public BarrenBonerott(EntityType<? extends BarrenBonerott> p_32889_, Level p_32890_) {
         super(p_32889_, p_32890_);
     }

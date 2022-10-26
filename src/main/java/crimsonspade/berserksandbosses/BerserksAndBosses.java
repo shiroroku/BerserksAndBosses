@@ -1,11 +1,13 @@
 package crimsonspade.berserksandbosses;
 
 import com.mojang.logging.LogUtils;
+import crimsonspade.berserksandbosses.Client.EntityRenderers.TectonicColossus2Renderer;
 import crimsonspade.berserksandbosses.Entity.*;
 import crimsonspade.berserksandbosses.Registry.BrewingRegistry;
 import crimsonspade.berserksandbosses.Registry.EnchantmentRegistry;
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
 import crimsonspade.berserksandbosses.Registry.ItemRegistry;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.Husk;
@@ -22,6 +24,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 @Mod(BerserksAndBosses.MODID)
 public class BerserksAndBosses {
@@ -38,6 +41,8 @@ public class BerserksAndBosses {
 		ItemRegistry.ITEMS.register(eventBus);
 		eventBus.addListener(this::setup);
 		eventBus.addListener(BerserksAndBosses::entityAttributeEvent);
+
+		GeckoLib.initialize();
 	}
 
 	public static final CreativeModeTab CREATIVETAB = new CreativeModeTab(MODID) {
@@ -63,8 +68,9 @@ public class BerserksAndBosses {
 			SpawnPlacements.register(EntityRegistry.FLESH_RAPTOR.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 			SpawnPlacements.register(EntityRegistry.ASHURA_ENDERMAN.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
 			SpawnPlacements.register(EntityRegistry.NETHER_WIDOW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMonsterSpawnRules);
-			SpawnPlacements.register(EntityRegistry.MALICE_SOULFLAME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
-			SpawnPlacements.register(EntityRegistry.XENOCARA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.MALICE_SOULFLAME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.XENOCARA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.CRIMSADER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 		});
 	}
 
@@ -89,6 +95,9 @@ public class BerserksAndBosses {
 		event.put(EntityRegistry.BERSERK_PHANTOM.get(), BerserkPhantom.setAttributes());
 		event.put(EntityRegistry.PITCHFUL.get(), Pitchful.setAttributes());
 		event.put(EntityRegistry.MALICE_SOULFLAME.get(), MaliceSoulflame.setAttributes());
+		event.put(EntityRegistry.TECTONIC_COLOSSUS_2.get(), TectonicColossus2.setAttributes());
+		event.put(EntityRegistry.TECTONIC_COLOSSUS_1.get(), TectonicColossus1.setAttributes());
+		event.put(EntityRegistry.CRIMSADER.get(), Crimsader.setAttributes());
 	}
 
 }

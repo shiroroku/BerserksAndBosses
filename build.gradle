@@ -88,19 +88,19 @@ minecraft {
 
 mixin {
     add sourceSets.main, "berserksandbosses.refmap.json"
-
     config "berserksandbosses.mixins.json"
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+    maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.18:3.0.48')
 }
 
 jar {

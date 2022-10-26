@@ -33,6 +33,8 @@ public class EntityRendererEvent {
         event.registerLayerDefinition(BerserkStriderModel.LAYER_LOCATION, BerserkStriderModel::createBodyLayer);
         event.registerLayerDefinition(PitchfulModel.LAYER_LOCATION, PitchfulModel::createBodyLayer);
         event.registerLayerDefinition(MaliceSoulflameModel.LAYER_LOCATION, MaliceSoulflameModel::createBodyLayer);
+        event.registerLayerDefinition(TectonicColossus1Model.LAYER_LOCATION, TectonicColossus1Model::createBodyLayer);
+        event.registerLayerDefinition(CrimsaderModel.LAYER_LOCATION, CrimsaderModel::createBodyLayer);
     }
 
     @SubscribeEvent
@@ -59,5 +61,8 @@ public class EntityRendererEvent {
         event.registerEntityRenderer(EntityRegistry.BERSERK_STRIDER.get(), BerserkStriderRenderer::new);
         event.registerEntityRenderer(EntityRegistry.PITCHFUL.get(), PitchfulRenderer::new);
         event.registerEntityRenderer(EntityRegistry.MALICE_SOULFLAME.get(), MaliceSoulflameRenderer::new);
+        event.registerEntityRenderer(EntityRegistry.TECTONIC_COLOSSUS_2.get(), TectonicColossus2Renderer::new);
+        event.registerEntityRenderer(EntityRegistry.TECTONIC_COLOSSUS_1.get(), TectonicColossus1Renderer::new);
+        event.registerEntityRenderer(EntityRegistry.CRIMSADER.get(), CrimsaderRenderer::new);
     }
 }
