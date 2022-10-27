@@ -63,7 +63,7 @@ public class ItemRegistry {
 			()-> new SpacefractureShurikenItem(new Item.Properties().stacksTo(32).tab(BerserksAndBosses.CREATIVETAB)));
 
 	public static final RegistryObject<TectonicMedaillionItem> TECTONIC_MEDAILLION = ITEMS.register("tectonic_medaillion",
-			()-> new TectonicMedaillionItem(new Item.Properties().stacksTo(16).tab(BerserksAndBosses.CREATIVETAB)));
+			()-> new TectonicMedaillionItem(new Item.Properties().stacksTo(16).durability(1).tab(BerserksAndBosses.CREATIVETAB)));
 
 	public static Supplier<Item> TooltipItem(Item.Properties properties, String tooltipKey){
 		return () -> new Item(properties){

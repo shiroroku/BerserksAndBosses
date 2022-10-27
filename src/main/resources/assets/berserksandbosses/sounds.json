@@ -1,0 +1,10 @@
+{
+  "father_fallen_foes": {
+    "sounds": [
+      {
+        "name": "berserksandbosses:father_fallen_foes",
+        "stream": true
+      }
+    ]
+  }
+}

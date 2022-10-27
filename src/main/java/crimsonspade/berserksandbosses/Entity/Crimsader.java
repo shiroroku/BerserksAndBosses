@@ -118,7 +118,7 @@ public class Crimsader extends Monster implements RangedAttackMob{
             }
         });
         this.goalSelector.addGoal(1, new WaterAvoidingRandomFlyingGoal(this, 1));
-        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1, false){
+        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 10, false){
             @Override
             protected void checkAndPerformAttack(LivingEntity pEnemy, double pDistToEnemySqr) {
                 double d0 = this.getAttackReachSqr(pEnemy);
@@ -157,7 +157,7 @@ public class Crimsader extends Monster implements RangedAttackMob{
         double d1 = pTarget.getY(0.3333333333333333D) - shuriken.getY();
         double d2 = pTarget.getZ() - this.getZ();
         double d3 = Math.sqrt(d0 * d0 + d2 * d2) * (double)0.2F;
-        shuriken.shoot(d0, d1 + d3, d2, 1.5F, 10.0F);
+        shuriken.shoot(d0, d1 + d3, d2, 1.5F, 0.0F);
         level.addFreshEntity(shuriken);
     }
 }

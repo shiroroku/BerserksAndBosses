@@ -4,16 +4,26 @@ import crimsonspade.berserksandbosses.Registry.EntityRegistry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class EntityGen {
+    public static void structureSpawn(final StructureSpawnListGatherEvent event){
+        if (event.getStructure() == StructureFeature.STRONGHOLD) {
+            event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.CHAINLOCK.get(), 50, 1, 1));
+            event.addEntitySpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityRegistry.SPRINGLOCK.get(), 30, 1, 1));
+        }
+    }
+
     public static void onEntitySpawn(final BiomeLoadingEvent event) {
         addEntityToSpecificBiomes(event, EntityRegistry.CRIMPA.get(),
                 50, 1, 1, Biomes.CRIMSON_FOREST);
@@ -54,8 +64,8 @@ public class EntityGen {
         addEntityToAllBiomes(event, EntityRegistry.XENOCARA.get(),
                 1, 1, 1);
 
-        addEntityToCategory(event, EntityRegistry.XENOCARA.get(),
-                20, 1, 1, Biome.BiomeCategory.NETHER);
+        addEntityToAllBiomes(event, EntityRegistry.CRIMSADER.get(),
+                15, 1, 1);
     }
 
 

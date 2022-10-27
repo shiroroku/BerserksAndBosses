@@ -1,9 +1,14 @@
 package crimsonspade.berserksandbosses.Entity;
 
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.sounds.MusicManager;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,8 +23,12 @@ import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class TectonicColossus1 extends Monster {
     public TectonicColossus1(EntityType<? extends TectonicColossus1> p_32889_, Level p_32890_) {
@@ -44,9 +53,12 @@ public class TectonicColossus1 extends Monster {
             var form2 = new TectonicColossus2(EntityRegistry.TECTONIC_COLOSSUS_2.get(), this.getLevel());
             form2.setPos(this.position());
             form2.setSpawnState(1);
-            //TODO: add boss music
-            //level.playLocalSound(this.getX(), this.getY(), this.getZ());
+            Objects.requireNonNull(Objects.requireNonNull(this.getLevel().getServer()).getLevel(Level.OVERWORLD)).setWeatherParameters(0, 100000, true, true);
             this.getLevel().addFreshEntity(form2);
+        } else {
+            for (Player nearbyPlayer : level.getNearbyPlayers(TargetingConditions.forNonCombat(), null, AABB.ofSize(this.position(), 30, 30, 30))) {
+                nearbyPlayer.playSound(SoundRegistry.COLOSSUS_MUSIC.get(), 1f, 1f);
+            }
         }
         super.die(pCause);
     }

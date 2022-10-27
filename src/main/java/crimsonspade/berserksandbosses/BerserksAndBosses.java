@@ -3,10 +3,7 @@ package crimsonspade.berserksandbosses;
 import com.mojang.logging.LogUtils;
 import crimsonspade.berserksandbosses.Client.EntityRenderers.TectonicColossus2Renderer;
 import crimsonspade.berserksandbosses.Entity.*;
-import crimsonspade.berserksandbosses.Registry.BrewingRegistry;
-import crimsonspade.berserksandbosses.Registry.EnchantmentRegistry;
-import crimsonspade.berserksandbosses.Registry.EntityRegistry;
-import crimsonspade.berserksandbosses.Registry.ItemRegistry;
+import crimsonspade.berserksandbosses.Registry.*;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -37,8 +34,9 @@ public class BerserksAndBosses {
 
 		EntityRegistry.ENTITIES.register(eventBus);
 		EnchantmentRegistry.ENCHANTMENTS.register(eventBus);
-
+		SoundRegistry.SOUND_EVENTS.register(eventBus);
 		ItemRegistry.ITEMS.register(eventBus);
+
 		eventBus.addListener(this::setup);
 		eventBus.addListener(BerserksAndBosses::entityAttributeEvent);
 
@@ -71,6 +69,8 @@ public class BerserksAndBosses {
 			SpawnPlacements.register(EntityRegistry.MALICE_SOULFLAME.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 			SpawnPlacements.register(EntityRegistry.XENOCARA.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 			SpawnPlacements.register(EntityRegistry.CRIMSADER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.SPRINGLOCK.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.CHAINLOCK.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 		});
 	}
 

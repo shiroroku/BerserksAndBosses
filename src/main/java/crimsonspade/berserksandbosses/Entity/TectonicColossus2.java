@@ -1,5 +1,6 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -17,11 +18,15 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -32,6 +37,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
+
+import java.util.Objects;
 
 
 public class TectonicColossus2 extends Monster implements IAnimatable {
@@ -50,8 +57,9 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
     }
 
     @Override
-    public void die(DamageSource source) {
+    public void die(@NotNull DamageSource source) {
         if (!this.level.isClientSide) {
+            Objects.requireNonNull(Objects.requireNonNull(this.getLevel().getServer()).getLevel(Level.OVERWORLD)).setWeatherParameters(0, 1000,  false, false);
             if (source == DamageSource.OUT_OF_WORLD) {
                 this.setDeathState(1);
                 this.level.broadcastEntityEvent(this, (byte) 3);
@@ -101,7 +109,7 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
     }
 
 
-    public int getAttckingState() {
+    public int getAttackingState() {
         return this.entityData.get(STATE);
     }
 
@@ -130,7 +138,7 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
                 .add(Attributes.FOLLOW_RANGE, 16.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.MAX_HEALTH, 150)
-                .add(Attributes.ATTACK_DAMAGE, 10.0D)
+                .add(Attributes.ATTACK_DAMAGE, 50.0D)
                 .add(Attributes.ARMOR, 3.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1.5D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1D)
@@ -140,7 +148,7 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new ColossusAttackGoal(this, 1.2, random.nextInt(1, 3)));
+        this.goalSelector.addGoal(1, new ColossusAttackGoal(this, 1.6, random.nextInt(1, 3)));
         this.goalSelector.addGoal(2, new RandomStrollGoal(this, 1));
         this.goalSelector.addGoal(3, new SummonGoal(this, 16));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this));
@@ -175,14 +183,20 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
 
         @Override
         public void tick() {
-            if (this.entity.tickCount % 1000 == 0){
+            if (this.entity.tickCount % 100 == 0){
                 ServerLevel serverlevel = (ServerLevel)this.entity.level;
                 for(int i = 0; i < 3; ++i) {
-                    Slime slime = new Slime(EntityType.SLIME, entity.level);
-                    slime.getPersistentData().putInt("Size", 3);
-                    slime.setPos(this.entity.position());
-                    slime.push(this.entity.getRandomX(1) * 0.5D, 0.0D, this.entity.getRandomZ(1) * 0.5D);
-                    serverlevel.addFreshEntity(slime);
+                    var tag = new CompoundTag();
+                    tag.putInt("Size", 3);
+                    Entity entity = EntityType.loadEntityRecursive(tag, serverlevel, (p_138828_) -> {
+                        p_138828_.moveTo(TectonicColossus2.this.getX(), TectonicColossus2.this.getY(), TectonicColossus2.this.getZ(), p_138828_.getYRot(), p_138828_.getXRot());
+                        return p_138828_;
+                    });
+                    if (entity == null){
+                        return;
+                    }
+                    entity.push(this.entity.getRandomX(1) * 0.5D, 0.0D, this.entity.getRandomZ(1) * 0.5D);
+                    serverlevel.addFreshEntity(entity);
                 }
             }
             super.tick();
@@ -190,7 +204,7 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
     }
 
     @Override
-    public SoundEvent getHurtSound(DamageSource ds) {
+    public SoundEvent getHurtSound(@NotNull DamageSource ds) {
         return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
     }
 
@@ -201,11 +215,12 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn(@NotNull ServerLevelAccessor pLevel, @NotNull DifficultyInstance pDifficulty, @NotNull MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.setSpawnState(0);
         return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event){
         if ((this.dead || this.getHealth() < 0.01 || this.isDeadOrDying()) && this.entityData.get(DEATH_STATE) == 1) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("death", ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME));
@@ -219,21 +234,20 @@ public class TectonicColossus2 extends Monster implements IAnimatable {
         if(event.isMoving() && this.entityData.get(DEATH_STATE) != 1){
             if (this.getTarget() != null) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("walk", ILoopType.EDefaultLoopTypes.LOOP));
-                return PlayState.CONTINUE;
             } else {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("walk2", ILoopType.EDefaultLoopTypes.LOOP));
-                return PlayState.CONTINUE;
             }
+            return PlayState.CONTINUE;
         }
-        if(this.getAttckingState() == 1 && this.entityData.get(DEATH_STATE) != 1){
+        if(this.getAttackingState() == 1 && this.entityData.get(DEATH_STATE) != 1){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("double_attack", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             return PlayState.CONTINUE;
         }
-        if(this.getAttckingState() == 2 && this.entityData.get(DEATH_STATE) != 1){
+        if(this.getAttackingState() == 2 && this.entityData.get(DEATH_STATE) != 1){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("slam_attack", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             return PlayState.CONTINUE;
         }
-        if(this.getAttckingState() == 2 && this.entityData.get(DEATH_STATE) != 1){
+        if(this.getAttackingState() == 2 && this.entityData.get(DEATH_STATE) != 1){
             if (this.random.nextBoolean()){
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("slime_spawn_attack_1", ILoopType.EDefaultLoopTypes.PLAY_ONCE));
             } else {

@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "berserksandbosses:tectonic_medaillion"
+    },
+    "title": "The Big Bads",
+    "description": "Summon the first boss",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "berserksandbosses:root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "item": {
+          "items": [
+            "berserksandbosses:tectonic_medaillion"
+          ]
+        }
+      }
+    }
+  }
+}

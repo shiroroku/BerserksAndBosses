@@ -41,8 +41,8 @@ public class EntityRegistry {
 	public static final RegistryObject<EntityType<Pitchful>> PITCHFUL = registerWithSpawnEgg("pitchful", ()-> EntityType.Builder.<Pitchful>of(Pitchful::new, MobCategory.MONSTER).sized(2.4f, 2.4f).build(BerserksAndBosses.MODID + "pitchful"), 0x333333, 0x706d6d);
 	public static final RegistryObject<EntityType<MaliceSoulflame>> MALICE_SOULFLAME = registerWithSpawnEgg("malice_soulflame", ()-> EntityType.Builder.of(MaliceSoulflame::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "malice_soulflame"), 0xf2002c, 0x46e3d9);
 	public static final RegistryObject<EntityType<TectonicColossus1>> TECTONIC_COLOSSUS_1 = registerWithSpawnEgg("tectonic_colossus_1", ()-> EntityType.Builder.of(TectonicColossus1::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "tactonic_colossus_1"), 0x575757, 0x313336);
-	public static final RegistryObject<EntityType<TectonicColossus2>> TECTONIC_COLOSSUS_2 = register("tectonic_colossus_2", ()-> EntityType.Builder.of(TectonicColossus2::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "tectonic_colossus_2"));
-	public static final RegistryObject<EntityType<Crimsader>> CRIMSADER = registerWithSpawnEgg("crimsader", ()-> EntityType.Builder.of(Crimsader::new, MobCategory.MONSTER).sized(0.6f, 1.8f).build(BerserksAndBosses.MODID + "crimsader"), 0x911616, 0xe64c4c);
+	public static final RegistryObject<EntityType<TectonicColossus2>> TECTONIC_COLOSSUS_2 = register("tectonic_colossus_2", ()-> EntityType.Builder.of(TectonicColossus2::new, MobCategory.MONSTER).sized(1f, 1.8f).build(BerserksAndBosses.MODID + "tectonic_colossus_2"));
+	public static final RegistryObject<EntityType<Crimsader>> CRIMSADER = registerWithSpawnEgg("crimsader", ()-> EntityType.Builder.of(Crimsader::new, MobCategory.MONSTER).sized(1.2f, 1.8f).build(BerserksAndBosses.MODID + "crimsader"), 0x911616, 0xe64c4c);
 
 
 

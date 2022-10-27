@@ -1,0 +1,47 @@
+{
+  "display": {
+    "icon": {
+      "item": "berserksandbosses:berserk_phantom_spawn_egg"
+    },
+    "title": "Breaking Point",
+    "description": "Defeat a Berserk mob!",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "berserksandbosses:root",
+  "criteria": {
+    "kill": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "berserksandbosses:berserk_axolotl"
+        }
+      }
+    },
+    "kill2": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "berserksandbosses:berserk_phantom"
+        }
+      }
+    },
+    "kill3": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "berserksandbosses:berserk_strider"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kill",
+      "kill2",
+      "kill3"
+    ]
+  ]
+}

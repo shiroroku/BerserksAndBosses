@@ -44,7 +44,7 @@ public class BerserkPhantom extends Phantom {
             @Override
             public void tick() {
                 super.tick();
-                if (this.mob.position().y() > 300) {
+                if (this.mob.position().y() > 300 && this.mob.getTarget() != null) {
                     this.mob.getTarget().unRide();
                 }
             }
