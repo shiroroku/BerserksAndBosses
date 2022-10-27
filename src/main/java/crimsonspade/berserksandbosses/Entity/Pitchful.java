@@ -1,10 +1,8 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -12,6 +10,9 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+
+import java.util.Random;
 
 public class Pitchful extends Monster {
     public int lightTime = 0;
@@ -24,6 +25,11 @@ public class Pitchful extends Monster {
     public Pitchful(EntityType<? extends Pitchful> type, Level level, Player owner){
         super(type, level);
         this.owner = owner;
+    }
+
+    public static boolean checkMobSpawnRules(EntityType<? extends Mob> pType, LevelAccessor pLevel, MobSpawnType pReason, BlockPos pPos, Random pRandom) {
+        BlockPos blockpos = pPos.below();
+        return (pReason == MobSpawnType.SPAWNER || pLevel.getBlockState(blockpos).isValidSpawn(pLevel, blockpos, pType)) && pLevel.getRawBrightness(pPos, 0) < 4;
     }
 
     @Override

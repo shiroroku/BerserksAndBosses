@@ -1,6 +1,9 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +23,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
@@ -67,6 +72,17 @@ public class Crimsader extends Monster implements RangedAttackMob{
         }
 
         this.calculateEntityAnimation(this, false);
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundRegistry.CRIMSADER_AMBIENCE.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundRegistry.CRIMSADER_DEATH.get();
     }
 
     @Override

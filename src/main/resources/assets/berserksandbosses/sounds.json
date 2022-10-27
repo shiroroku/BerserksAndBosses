@@ -6,5 +6,65 @@
         "stream": true
       }
     ]
+  },
+  "blizzpa_ambience": {
+    "subtitle": "sounds.berserksandbosses.blizzpa_ambience",
+    "sounds": [
+        "berserksandbosses:blizzpa_ambience"
+    ]
+  },
+  "crimpa_ambience": {
+    "subtitle": "sounds.berserksandbosses.crimpa_ambience",
+    "sounds": [
+      "berserksandbosses:crimpa_ambience"
+    ]
+  },
+  "crimpa_death": {
+    "subtitle": "sounds.berserksandbosses.crimpa_death",
+    "sounds": [
+        "berserksandbosses:crimpa_death"
+    ]
+  },
+  "crimpa_hurt": {
+    "subtitle": "sounds.berserksandbosses.crimpa_hurt",
+    "sounds": [
+        "berserksandbosses:crimpa_hurt"
+    ]
+  },
+  "crimsader_ambience": {
+    "subtitle": "sounds.berserksandbosses.crimsader_ambience",
+    "sounds": [
+        "berserksandbosses:crimsader_ambience"
+    ]
+  },
+  "crimsader_death": {
+    "subtitle": "sounds.berserksandbosses.crimsader_death",
+    "sounds": [
+        "berserksandbosses:crimsader_death"
+    ]
+  },
+  "normpa_ambience": {
+    "subtitle": "sounds.berserksandbosses.normpa_ambience",
+    "sounds": [
+        "berserksandbosses:normpa_ambience"
+    ]
+  },
+  "warpa_ambience": {
+    "subtitle": "sounds.berserksandbosses.warpa_ambience",
+    "sounds": [
+      "berserksandbosses:warpa_ambience"
+    ]
+  },
+  "warpa_death": {
+    "subtitle": "sounds.berserksandbosses.warpa_death",
+    "sounds": [
+        "berserksandbosses:warpa_death"
+    ]
+  },
+  "warpa_hurt": {
+    "subtitle": "sounds.berserksandbosses.warpa_hurt",
+    "sounds": [
+        "berserksandbosses:warpa_hurt"
+    ]
   }
 }

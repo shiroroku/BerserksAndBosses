@@ -1,5 +1,6 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -53,16 +54,16 @@ public class Warpa extends Monster {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:warpa_ambience"));
+        return SoundRegistry.WARPA_AMBIENCE.get();
     }
 
     @Override
     public SoundEvent getHurtSound(@NotNull DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:warpa_hurt"));
+        return SoundRegistry.WARPA_HURT.get();
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:warpa_death"));
+        return SoundRegistry.WARPA_DEATH.get();
     }
 }

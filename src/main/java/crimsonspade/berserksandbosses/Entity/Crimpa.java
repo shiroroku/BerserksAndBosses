@@ -1,5 +1,6 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -55,16 +56,16 @@ public class Crimpa extends Monster {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:crimpa_ambience"));
+        return SoundRegistry.CRIMPA_AMBIENCE.get();
     }
 
     @Override
     public SoundEvent getHurtSound(@NotNull DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:crimpa_hurt"));
+        return SoundRegistry.CRIMPA_HURT.get();
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:crimpa_death"));
+        return SoundRegistry.CRIMPA_DEATH.get();
     }
 }

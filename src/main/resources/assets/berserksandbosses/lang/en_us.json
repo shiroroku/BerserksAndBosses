@@ -75,5 +75,16 @@
 
   "enchantment.berserksandbosses.rebellion": "Rebellion",
 
-  "itemGroup.berserksandbosses": "Berserks And Bosses"
+  "itemGroup.berserksandbosses": "Berserks And Bosses",
+
+  "sounds.berserksandbosses.blizzpa_ambience": "Blizzpa Ambience",
+  "sounds.berserksandbosses.crimpa_ambience": "Crimpa Ambience",
+  "sounds.berserksandbosses.crimpa_death": "Crimpa Death",
+  "sounds.berserksandbosses.crimpa_hurt": "Crimpa Hurt",
+  "sounds.berserksandbosses.crimsader_ambience": "Crimsader Ambience",
+  "sounds.berserksandbosses.crimsader_death": "Crimsader Death",
+  "sounds.berserksandbosses.normpa_ambience": "Normpa Ambience",
+  "sounds.berserksandbosses.warpa_ambience": "Warpa Ambience",
+  "sounds.berserksandbosses.warpa_death": "Warpa Death",
+  "sounds.berserksandbosses.warpa_hurt": "Warpa Hurt"
 }

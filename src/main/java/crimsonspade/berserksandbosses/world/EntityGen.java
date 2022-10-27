@@ -66,6 +66,9 @@ public class EntityGen {
 
         addEntityToAllBiomes(event, EntityRegistry.CRIMSADER.get(),
                 15, 1, 1);
+
+        addEntityToCategory(event, EntityRegistry.CRIMSADER.get(),
+                10, 1, 1, Biome.BiomeCategory.UNDERGROUND);
     }
 
 

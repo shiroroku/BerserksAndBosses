@@ -71,6 +71,7 @@ public class BerserksAndBosses {
 			SpawnPlacements.register(EntityRegistry.CRIMSADER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 			SpawnPlacements.register(EntityRegistry.SPRINGLOCK.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
 			SpawnPlacements.register(EntityRegistry.CHAINLOCK.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules);
+			SpawnPlacements.register(EntityRegistry.PITCHFUL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Pitchful::checkMobSpawnRules);
 		});
 	}
 

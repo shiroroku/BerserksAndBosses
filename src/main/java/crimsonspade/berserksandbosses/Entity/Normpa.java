@@ -1,5 +1,6 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import crimsonspade.berserksandbosses.Registry.SoundRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
@@ -50,7 +51,7 @@ public class Normpa extends Monster {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("berserksandbosses:normpa_ambience"));
+        return SoundRegistry.NORMPA_AMBIENCE.get();
     }
 
     @Override
