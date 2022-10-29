@@ -1,5 +1,6 @@
 package crimsonspade.berserksandbosses.Entity;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -10,6 +11,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -45,12 +47,43 @@ public class Devolter extends Monster implements RangedAttackMob {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 16.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.ATTACK_DAMAGE, 6.0D)
                 .add(Attributes.ARMOR, 2.0D)
                 .build();
+    }
+
+    @Override
+    public void travel(Vec3 pTravelVector) {
+        if (this.isInWater()) {
+            this.moveRelative(0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale((double)0.8F));
+        } else if (this.isInLava()) {
+            this.moveRelative(0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+        } else {
+            BlockPos ground = new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ());
+            float f = 0.91F;
+            if (this.onGround) {
+                f = this.level.getBlockState(ground).getFriction(this.level, ground, this) * 0.91F;
+            }
+
+            float f1 = 0.16277137F / (f * f * f);
+            f = 0.91F;
+            if (this.onGround) {
+                f = this.level.getBlockState(ground).getFriction(this.level, ground, this) * 0.91F;
+            }
+
+            this.moveRelative(this.onGround ? 0.1F * f1 : 0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale((double)f));
+        }
+
+        this.calculateEntityAnimation(this, false);
     }
 
     public void performRangedAttack(LivingEntity pTarget, float pDistanceFactor) {

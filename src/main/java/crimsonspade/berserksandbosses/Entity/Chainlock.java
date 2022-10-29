@@ -12,7 +12,9 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +26,7 @@ public class Chainlock extends Monster {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 16.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.MAX_HEALTH, 50)
                 .add(Attributes.ATTACK_DAMAGE, 6.0D)
@@ -35,6 +37,7 @@ public class Chainlock extends Monster {
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
             @Override
             protected double getAttackReachSqr(LivingEntity entity) {

@@ -24,7 +24,7 @@ public class AshuraEnderman extends EnderMan {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 16.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.MAX_HEALTH, 40)
                 .add(Attributes.ATTACK_DAMAGE, 8.0D)

@@ -45,7 +45,7 @@ public class FrigidBonerott extends Monster {
     }
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 16.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.ATTACK_DAMAGE, 6.0D)

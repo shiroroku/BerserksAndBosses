@@ -9,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -22,7 +23,7 @@ public class Springlock extends Monster {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.FOLLOW_RANGE, 16.0D)
+                .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
                 .add(Attributes.MAX_HEALTH, 20)
                 .add(Attributes.ATTACK_DAMAGE, 3.0D)
@@ -33,6 +34,7 @@ public class Springlock extends Monster {
     @Override
     protected void registerGoals() {
         super.registerGoals();
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2, false) {
             @Override
             protected double getAttackReachSqr(LivingEntity entity) {

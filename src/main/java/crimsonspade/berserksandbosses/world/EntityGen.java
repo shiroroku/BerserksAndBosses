@@ -26,16 +26,16 @@ public class EntityGen {
 
     public static void onEntitySpawn(final BiomeLoadingEvent event) {
         addEntityToSpecificBiomes(event, EntityRegistry.CRIMPA.get(),
-                50, 1, 1, Biomes.CRIMSON_FOREST);
+                5, 1, 1, Biomes.CRIMSON_FOREST);
 
         addEntityToSpecificBiomes(event, EntityRegistry.WARPA.get(),
-                50, 1, 1, Biomes.WARPED_FOREST);
+                5, 1, 1, Biomes.WARPED_FOREST);
 
         addEntityToAllOverworldBiomes(event, EntityRegistry.NORMPA.get(),
-                50, 1, 1);
+                5, 1, 1);
 
         addEntityToCategory(event, EntityRegistry.BLIZZPA.get(),
-                50, 1, 1, Biome.BiomeCategory.ICY);
+                5, 1, 1, Biome.BiomeCategory.ICY);
 
         addEntityToCategory(event, EntityRegistry.BARREN_BONEROTT.get(),
                 50, 1, 1, Biome.BiomeCategory.SAVANNA, Biome.BiomeCategory.DESERT, Biome.BiomeCategory.MESA);
@@ -47,13 +47,13 @@ public class EntityGen {
                 50, 1, 1);
 
         addEntityToCategory(event, EntityRegistry.DEVOLTER.get(),
-                50, 1, 1, Biome.BiomeCategory.NETHER);
+                20, 1, 1, Biome.BiomeCategory.NETHER);
 
         addEntityToCategory(event, EntityRegistry.FLESH_RAPTOR.get(),
-                50, 1, 1, Biome.BiomeCategory.NETHER);
+                20, 1, 1, Biome.BiomeCategory.NETHER);
 
         addEntityToCategory(event, EntityRegistry.ASHURA_ENDERMAN.get(),
-                10, 1, 1, Biome.BiomeCategory.NETHER);
+                5, 1, 1, Biome.BiomeCategory.NETHER);
 
         addEntityToCategory(event, EntityRegistry.NETHER_WIDOW.get(),
                 60, 1, 1, Biome.BiomeCategory.NETHER);
@@ -65,10 +65,22 @@ public class EntityGen {
                 1, 1, 1);
 
         addEntityToAllBiomes(event, EntityRegistry.CRIMSADER.get(),
-                15, 1, 1);
+                2, 1, 1);
 
-        addEntityToCategory(event, EntityRegistry.CRIMSADER.get(),
+        addEntityToCategory(event, EntityRegistry.PITCHFUL.get(),
                 10, 1, 1, Biome.BiomeCategory.UNDERGROUND);
+
+        addEntityToAllOverworldBiomes(event, EntityRegistry.BERSERK_PHANTOM.get(),
+                10, 1, 1);
+
+        addEntityToCategory(event, EntityRegistry.BERSERK_PHANTOM.get(),
+                3, 1, 1);
+
+        addEntityToCategory(event, EntityRegistry.PITCHFUL.get(),
+                3, 1, 1, Biome.BiomeCategory.RIVER);
+
+        addEntityToCategory(event, EntityRegistry.PITCHFUL.get(),
+                3, 1, 1, Biome.BiomeCategory.NETHER);
     }
 
 

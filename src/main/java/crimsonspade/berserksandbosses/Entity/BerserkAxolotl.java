@@ -75,7 +75,7 @@ public class BerserkAxolotl extends Axolotl {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 120.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.FOLLOW_RANGE, 16D)
+                .add(Attributes.FOLLOW_RANGE, 25D)
                 .add(Attributes.ATTACK_DAMAGE, 12.0D).build();
     }
 

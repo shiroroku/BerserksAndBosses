@@ -155,7 +155,7 @@ public class Crimsader extends Monster implements RangedAttackMob{
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 350)
                 .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.FOLLOW_RANGE, 16D)
+                .add(Attributes.FOLLOW_RANGE, 25D)
                 .add(Attributes.ARMOR, 3D)
                 .add(Attributes.FLYING_SPEED, 0.3D)
                 .add(Attributes.ATTACK_KNOCKBACK, 1)

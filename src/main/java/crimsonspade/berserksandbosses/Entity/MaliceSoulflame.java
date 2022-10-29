@@ -1,12 +1,10 @@
 package crimsonspade.berserksandbosses.Entity;
 
 import crimsonspade.berserksandbosses.Registry.EntityRegistry;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -47,6 +45,37 @@ public class MaliceSoulflame extends PathfinderMob {
         }
 
         super.aiStep();
+    }
+
+    @Override
+    public void travel(Vec3 pTravelVector) {
+        if (this.isInWater()) {
+            this.moveRelative(0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale((double)0.8F));
+        } else if (this.isInLava()) {
+            this.moveRelative(0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale(0.5D));
+        } else {
+            BlockPos ground = new BlockPos(this.getX(), this.getY() - 1.0D, this.getZ());
+            float f = 0.91F;
+            if (this.onGround) {
+                f = this.level.getBlockState(ground).getFriction(this.level, ground, this) * 0.91F;
+            }
+
+            float f1 = 0.16277137F / (f * f * f);
+            f = 0.91F;
+            if (this.onGround) {
+                f = this.level.getBlockState(ground).getFriction(this.level, ground, this) * 0.91F;
+            }
+
+            this.moveRelative(this.onGround ? 0.1F * f1 : 0.02F, pTravelVector);
+            this.move(MoverType.SELF, this.getDeltaMovement());
+            this.setDeltaMovement(this.getDeltaMovement().scale((double)f));
+        }
+
+        this.calculateEntityAnimation(this, false);
     }
 
     protected void customServerAiStep() {
