@@ -1,6 +1,8 @@
 package crimsonspade.berserksandbosses.Enchantment;
 
 import crimsonspade.berserksandbosses.Registry.EnchantmentRegistry;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -20,8 +22,18 @@ public class RebellionEnchantment extends Enchantment {
 		if (event.side == LogicalSide.SERVER && event.player.tickCount % 2 == 0) {
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(event.player.getItemBySlot(EquipmentSlot.CHEST));
 			if (enchantments.containsKey(EnchantmentRegistry.rebellion.get())) {
-				var negEffects = event.player.getActiveEffects().stream().filter(mobEffectInstance -> !mobEffectInstance.getEffect().isBeneficial()).toList();
-				//todo add damage reduction
+				var negEffects = event.player.getActiveEffects().stream().filter(mobEffectInstance -> !mobEffectInstance.getEffect().isBeneficial()).count();
+				switch (enchantments.get(EnchantmentRegistry.rebellion.get())){
+					case 1: if (negEffects > 2){
+						event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2, 1, false, false));
+					}
+					case 2: if (negEffects > 1){
+						event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2, 1, false, false));
+					}
+					case 3: if (negEffects > 0){
+						event.player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 2, 1, false, false));
+					}
+				}
 			}
 		}
 	}
